@@ -7,7 +7,7 @@ bot = telebot.TeleBot(TOKEN)
 @bot.message_handler(commands=['start'])
 def help(message: telebot.types.Message):
     text = 'Firstly enter command in next format(with whitespaces): ' \
-           ' \n- <Currency name, you want convert from >  \n- <Currency name you want to convert to' \
+           ' \n- <Currency name, you want convert to >  \n- <Currency name you want to convert from' \
            '> \n- <Amount to exchange>\n For example: euro dollar 220\n \
  Available currencies list: /values'
 
@@ -35,7 +35,7 @@ def get_price(message: telebot.types.Message):
     except Exception as e:
         bot.reply_to(message, f'can not process this command\n{e}')
     else:
-        text = f'Price {amount} {base} in {quote}: {total_base}'
+        text = f'Price {amount} {quote} in {base}: {total_base}'
         bot.send_message(message.chat.id, text)
 
 
